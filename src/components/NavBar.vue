@@ -6,6 +6,7 @@
     >
         <v-list>
             <v-list-item
+                link
                 class="px-2"
             >
                 <v-list-item-avatar>
@@ -61,7 +62,6 @@
                     { title: 'Notificações', icon: 'fas fa-bell'},
                     { title: 'Dashboard', icon: 'fas fa-chart-line' },
                     { title: 'Ocorrências', icon: 'fas fa-list-alt' },
-                    { title: 'Perfil', icon: 'fas fa-user'}
                 ]
             }
         },
