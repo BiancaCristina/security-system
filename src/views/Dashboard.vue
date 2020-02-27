@@ -2,7 +2,7 @@
     <v-container class="grey lighten-5" flat>
         <v-row>
             <v-col>
-                <Sparkline
+                <SparklineChart
                         v-bind:labels="hourLabels"
                         v-bind:values="hourValues"
                         lastUpdate="terça-feira 12:33"
@@ -11,7 +11,7 @@
             </v-col>
 
             <v-col>
-                <Sparkline
+                <SparklineChart
                         v-bind:labels="dayLabels"
                         v-bind:values="dayValues"
                         lastUpdate="terça-feira 12:33"
@@ -21,7 +21,7 @@
             </v-col>
 
             <v-col>
-                <Sparkline
+                <SparklineChart
                         v-bind:labels="monthLabels"
                         v-bind:values="monthValues"
                         lastUpdate="terça-feira 12:33"
@@ -31,15 +31,31 @@
             </v-col>
 
         </v-row>
+
+        <v-row>
+            <v-col>
+                <BarChart
+                    v-bind:labels="monthLabels"
+                    v-bind:values="barChartValues"
+                    v-bind:barColors="['#2980B9', '#27AE60', '#E74C3C']"
+                    lastUpdate="terça-feira 12:33"
+                    title="Resumo das Ocorrências"
+                    backgroundColor="#FBFCFC"
+                >
+
+                </BarChart>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
 <script>
-    import Sparkline from "../components/Sparkline";
+    import SparklineChart from "../components/SparklineChart";
+    import BarChart from "../components/BarChart";
 
     export default {
         name: 'Dashboard',
-        components: {Sparkline},
+        components: {SparklineChart, BarChart},
         data () {
             return {
                 hourLabels: ['09:00', '15:00', '21:00', '03:00'],
@@ -54,13 +70,20 @@
                     300, 450, 200, 500, 600, 452,
                     121, 876, 1000, 154, 400, 300
                 ],
-
-            }
-        },
-
-        methods: {
-            alerta() {
-                alert('ks')
+                barChartValues: [
+                    {
+                        name: 'Em andamento',
+                        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+                    },
+                    {
+                        name: 'Concluídas',
+                        data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+                    },
+                    {
+                        name: 'Não atendidas',
+                        data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+                    },
+                ],
             }
         }
     }

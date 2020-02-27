@@ -2,7 +2,7 @@
     <v-card
             class="mt-4 mx-auto"
             max-width="600"
-            
+
     >
         <v-sheet
                 class="v-sheet--offset mx-auto"
