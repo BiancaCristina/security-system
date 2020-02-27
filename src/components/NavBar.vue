@@ -3,6 +3,7 @@
         permanent
         expand-on-hover
         dark
+        absolute
     >
         <v-list>
             <v-list-item
@@ -25,28 +26,35 @@
                 v-for="option in options"
                 :key="option.title"
         >
-            <v-list-item link v-if="option.icon == 'fas fa-bell'" @click="clearNotifications">
-                <v-list-item-icon>
-                    <v-badge
-                        color="red"
-                        :value="notifications"
-                        :content="notifications"
-                        dot
-                    >
+            <router-link :to="option.route" v-if="option.icon == 'fas fa-bell'">
+                <v-list-item link @click="clearNotifications">
+                    <v-list-item-icon>
+                        <v-badge
+                            color="red"
+                            :value="notifications"
+                            :content="notifications"
+                            dot
+                        >
+                            <v-icon>{{option.icon}}</v-icon>
+                        </v-badge>
+                    </v-list-item-icon>
+
+                    <v-list-item-title>
+                        {{option.title}}
+                    </v-list-item-title>
+                </v-list-item>
+            </router-link>
+
+            <router-link :to="option.route" v-else>
+                <v-list-item link>
+                    <v-list-item-icon>
                         <v-icon>{{option.icon}}</v-icon>
-                    </v-badge>
-                </v-list-item-icon>
-                <v-list-item-title>{{option.title}}</v-list-item-title>
-            </v-list-item>
+                    </v-list-item-icon>
+                    <v-list-item-title>{{option.title}}</v-list-item-title>
+                </v-list-item>
+            </router-link>
 
-            <v-list-item link v-else>
-                <v-list-item-icon>
-                    <v-icon>{{option.icon}}</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>{{option.title}}</v-list-item-title>
-            </v-list-item>
         </v-list>
-
     </v-navigation-drawer>
 </template>
 
@@ -59,9 +67,9 @@
                 notifications: 1,
 
                 options: [
-                    { title: 'Notificações', icon: 'fas fa-bell'},
-                    { title: 'Dashboard', icon: 'fas fa-chart-line' },
-                    { title: 'Ocorrências', icon: 'fas fa-list-alt' },
+                    { title: 'Notificações', icon: 'fas fa-bell', route: '/notificacoes'},
+                    { title: 'Dashboard', icon: 'fas fa-chart-line', route: '/dashboard' },
+                    { title: 'Ocorrências', icon: 'fas fa-list-alt', route: '/ocorrencias' },
                 ]
             }
         },
@@ -75,3 +83,9 @@
         }
     }
 </script>
+
+<style scoped>
+    a {
+        text-decoration: none;
+    }
+</style>

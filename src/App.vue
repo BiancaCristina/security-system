@@ -1,6 +1,7 @@
 <template>
     <v-app>
         <NavBar />
+        <router-view></router-view>
     </v-app>
 </template>
 
@@ -9,7 +10,6 @@
 
     export default {
         name: 'App',
-
         components: {NavBar},
 
         data () {
