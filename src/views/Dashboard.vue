@@ -1,77 +1,67 @@
 <template>
-    <v-container fluid>
+    <v-container class="grey lighten-5" flat>
         <v-row>
-            <v-col cols="12">
-                <v-row
-                        :align="alignment"
-                        :justify="justify"
-                        class="grey lighten-5"
-                        style="height: 300px;"
-                >
-                    <v-card
-                            v-for="n in 3"
-                            :key="n"
-                            class="ma-3 pa-6"
-                            outlined
-                            tile
-                    >
-                        Column
-                    </v-card>
-                </v-row>
+            <v-col>
+                <Sparkline
+                        v-bind:labels="hourLabels"
+                        v-bind:values="hourValues"
+                        lastUpdate="terça-feira 12:33"
+                        title="Registro de Ocorrências (Diário)"
+                />
             </v-col>
-            <v-col cols="12">
-                <v-row justify="center">
-                    <v-col
-                            cols="6"
-                            md="2"
-                    >
-                        <v-select
-                                v-model="alignment"
-                                :items="alignmentsAvailable"
-                                label="Align"
-                        ></v-select>
-                    </v-col>
 
-                    <v-col
-                            cols="6"
-                            md="2"
-                    >
-                        <v-select
-                                v-model="justify"
-                                :items="justifyAvailable"
-                                label="Justify"
-                        ></v-select>
-                    </v-col>
-                </v-row>
+            <v-col>
+                <Sparkline
+                        v-bind:labels="dayLabels"
+                        v-bind:values="dayValues"
+                        lastUpdate="terça-feira 12:33"
+                        title="Registro de Ocorrências (Semanal)"
+                        backgroundColor="#E74C3C"
+                />
             </v-col>
+
+            <v-col>
+                <Sparkline
+                        v-bind:labels="monthLabels"
+                        v-bind:values="monthValues"
+                        lastUpdate="terça-feira 12:33"
+                        title="Registro de Ocorrências (Anual)"
+                        backgroundColor="#27AE60"
+                />
+            </v-col>
+
         </v-row>
     </v-container>
 </template>
 
 <script>
+    import Sparkline from "../components/Sparkline";
+
     export default {
         name: 'Dashboard',
-
+        components: {Sparkline},
         data () {
             return {
-                alignmentsAvailable: [
-                    'start',
-                    'center',
-                    'end',
-                    'baseline',
-                    'stretch',
+                hourLabels: ['09:00', '15:00', '21:00', '03:00'],
+                hourValues: [4, 1, 10, 3],
+                dayLabels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                dayValues: [20, 40, 10, 100, 2, 45, 60],
+                monthLabels: [
+                    'Jan.', 'Fev.', 'Mar.', 'Abr.', 'Mai.', 'Jun.',
+                    'Jul.', 'Ago.', 'Set.', 'Out.', 'Nov.', 'Dez.'
                 ],
-                alignment: 'center',
-                dense: false,
-                justifyAvailable: [
-                    'start',
-                    'center',
-                    'end',
-                    'space-around',
-                    'space-between',
+                monthValues: [
+                    300, 450, 200, 500, 600, 452,
+                    121, 876, 1000, 154, 400, 300
                 ],
-                justify: 'center',
+
             }
         },
+
+        methods: {
+            alerta() {
+                alert('ks')
+            }
+        }
     }
 </script>

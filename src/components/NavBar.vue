@@ -67,9 +67,9 @@
                 notifications: 1,
 
                 options: [
-                    { title: 'Notificações', icon: 'fas fa-bell', route: '/notificacoes'},
+                    { title: 'Notificações', icon: 'fas fa-bell', route: '/'},
                     { title: 'Dashboard', icon: 'fas fa-chart-line', route: '/dashboard' },
-                    { title: 'Ocorrências', icon: 'fas fa-list-alt', route: '/ocorrencias' },
+                    { title: 'Ocorrências', icon: 'fas fa-list-alt', route: '/' },
                 ]
             }
         },
