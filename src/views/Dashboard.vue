@@ -7,6 +7,7 @@
                         v-bind:values="hourValues"
                         lastUpdate="terça-feira 12:33"
                         title="Registro de Ocorrências (Diário)"
+                        backgroundColor='#2980B9'
                 />
             </v-col>
 
@@ -32,54 +33,55 @@
 
         </v-row>
 
-        <v-row
-                class="mb-6"
-                justify="center"
-                no-gutters
-        >
-            <v-col lg="3">
-                <InformationCard
-                        backgroundColor='#E74C3C'
-                        information="Não atendidas"
-                        value="100"
-                        lastUpdate="terça-feira 12:33"
-                        icon="mdi-alert-circle-outline"
-                />
-            </v-col>
-            <v-col md="auto">
-                <InformationCard
-                        backgroundColor='#27AE60'
-                        information="Concluídas"
-                        value="450"
-                        lastUpdate="terça-feira 12:33"
-                        icon="mdi-check-all"
-                />
-            </v-col>
-            <v-col lg="3">
-                <InformationCard
-                        backgroundColor='#2980B9'
-                        information="Em andamento"
-                        value="120"
-                        lastUpdate="terça-feira 12:33"
-                        icon="mdi-account-clock-outline"
-                />
-            </v-col>
-        </v-row>
+        <v-container class="grey lighten-5">
+            <v-row>
+                <v-col>
+                    <v-row class="pb-3">
+                        <InformationCard
+                                backgroundColor='#E74C3C'
+                                information="Não atendidas"
+                                value="100"
+                                lastUpdate="terça-feira 12:33"
+                                icon="mdi-alert-circle-outline"
+                        />
+                    </v-row>
 
-        <v-row>
-            <v-col>
-                <BarChart
-                        v-bind:labels="monthLabels"
-                        v-bind:values="barChartValues"
-                        v-bind:barColors="['#2980B9', '#27AE60', '#E74C3C']"
-                        lastUpdate="terça-feira 12:33"
-                        title="Resumo das Ocorrências"
-                        backgroundColor="#FBFCFC"
-                >
+                    <v-row class="pb-3">
+                        <InformationCard
+                                backgroundColor='#27AE60'
+                                information="Concluídas"
+                                value="450"
+                                lastUpdate="terça-feira 12:33"
+                                icon="mdi-check-all"
+                        />
+                    </v-row>
 
-                </BarChart>
-            </v-col>
-        </v-row>
+                    <v-row>
+                        <InformationCard
+                                backgroundColor='#2980B9'
+                                information="Em andamento"
+                                value="120"
+                                lastUpdate="terça-feira 12:33"
+                                icon="mdi-account-clock-outline"
+                        />
+                    </v-row>
+                </v-col>
+
+                <v-col>
+                    <BarChart
+                            v-bind:labels="monthLabels"
+                            v-bind:values="barChartValues"
+                            v-bind:barColors="['#2980B9', '#27AE60', '#E74C3C']"
+                            lastUpdate="terça-feira 12:33"
+                            title="Resumo das Ocorrências"
+                            backgroundColor="#FBFCFC"
+                    >
+
+                    </BarChart>
+                </v-col>
+            </v-row>
+        </v-container>
+
     </v-container>
 </template>
 
@@ -93,6 +95,12 @@
         components: {SparklineChart, BarChart, InformationCard},
         data () {
             return {
+                alignments: [
+                    'start',
+                    'center',
+                    'end',
+                ],
+
                 hourLabels: ['09:00', '15:00', '21:00', '03:00'],
                 hourValues: [4, 1, 10, 3],
                 dayLabels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
