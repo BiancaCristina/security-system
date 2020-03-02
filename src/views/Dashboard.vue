@@ -37,7 +37,7 @@
             <v-row>
                 <v-col>
                     <v-row class="pb-3">
-                        <InformationCard
+                        <InfoCard
                                 backgroundColor='#E74C3C'
                                 information="Não atendidas"
                                 value="100"
@@ -47,7 +47,7 @@
                     </v-row>
 
                     <v-row class="pb-3">
-                        <InformationCard
+                        <InfoCard
                                 backgroundColor='#27AE60'
                                 information="Concluídas"
                                 value="450"
@@ -57,7 +57,7 @@
                     </v-row>
 
                     <v-row>
-                        <InformationCard
+                        <InfoCard
                                 backgroundColor='#2980B9'
                                 information="Em andamento"
                                 value="120"
@@ -88,11 +88,11 @@
 <script>
     import SparklineChart from "../components/SparklineChart";
     import BarChart from "../components/BarChart";
-    import InformationCard from "../components/InformationCard";
+    import InfoCard from "../components/InfoCard";
 
     export default {
         name: 'Dashboard',
-        components: {SparklineChart, BarChart, InformationCard},
+        components: {SparklineChart, BarChart, InfoCard},
         data () {
             return {
                 alignments: [
