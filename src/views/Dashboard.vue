@@ -33,6 +33,10 @@
 
         </v-row>
 
+        <InfoCarousel>
+
+        </InfoCarousel>
+
         <v-container class="grey lighten-5">
             <v-row>
                 <v-col>
@@ -89,10 +93,11 @@
     import SparklineChart from "../components/SparklineChart";
     import BarChart from "../components/BarChart";
     import InfoCard from "../components/InfoCard";
+    import InfoCarousel from "../components/InfoCarousel";
 
     export default {
         name: 'Dashboard',
-        components: {SparklineChart, BarChart, InfoCard},
+        components: {InfoCarousel, SparklineChart, BarChart, InfoCard},
         data () {
             return {
                 alignments: [
